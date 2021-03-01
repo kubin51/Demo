@@ -1,11 +1,11 @@
 import Vue from "vue";
 import App from "./App.vue";
-import { Button } from "ant-design-vue";
+import Antd from "./Antd";
 import router from "./router";
 import store from "./store";
 
 Vue.config.productionTip = false;
-Vue.use(Button);
+Vue.use(Antd);
 new Vue({
   router,
   store,
