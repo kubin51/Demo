@@ -26,6 +26,33 @@ const routes = [
           import(/* webpackChunkName: "user" */ "../views/user/Register.vue")
       }
     ]
+  },
+  {
+    path: "/dashboard",
+    component: () =>
+      import(/* webpackChunkName: "user" */ "../layouts/BaseLayout.vue"),
+    children: [
+      {
+        path: "/dashboard",
+        redirect: "/dashboard/workplace"
+      },
+      {
+        path: "/dashboard/workplace",
+        name: "Workplace",
+        component: () =>
+          import(
+            /* webpackChunkName: "user" */ "../views/dashboard/Workplace.vue"
+          )
+      },
+      {
+        path: "/dashboard/analysis",
+        name: "Analysis",
+        component: () =>
+          import(
+            /* webpackChunkName: "user" */ "../views/dashboard/Analysis.vue"
+          )
+      }
+    ]
   }
 ];
 
