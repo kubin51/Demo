@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-menu theme="dark" :default-selected-keys="['1']" mode="inline">
+    <!--<a-menu theme="dark" :default-selected-keys="['1']" mode="inline">
       <a-menu-item key="1">
         <a-icon type="pie-chart" />
         <span>Option 1</span>
@@ -34,7 +34,8 @@
         <a-icon type="file" />
         <span>File</span>
       </a-menu-item>
-    </a-menu>
+    </a-menu>-->
+    菜单
   </div>
 </template>
 

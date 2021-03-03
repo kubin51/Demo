@@ -1,46 +1,67 @@
 <template>
-  <a-layout id="components-layout-demo-side" style="min-height: 100vh">
-    <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
-      <div class="logo" />
-      <SiderMenu />
-    </a-layout-sider>
-    <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
-        <a-icon
-          class="trigger"
-          :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-          @click="collapsed = !collapsed"
-        />
-        <Header style="float:right" />
-      </a-layout-header>
-      <a-layout-content style="margin: 0 16px">
-        <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>User</a-breadcrumb-item>
-          <a-breadcrumb-item>Bill</a-breadcrumb-item>
-        </a-breadcrumb>
-        <div :style="{ padding: '24px', background: '#fff', minHeight: '90%' }">
-          <router-view></router-view>
-        </div>
-      </a-layout-content>
-      <a-layout-footer style="text-align: center">
-        <Footer />
-      </a-layout-footer>
+  <div>
+    <a-layout id="components-layout-demo-side" style="min-height: 100vh">
+      <a-layout-sider
+        v-if="themeLocal === 'left'"
+        :theme="themeColor"
+        v-model="collapsed"
+        :trigger="null"
+        collapsible
+      >
+        <div class="logo" />
+        <SiderMenu />
+      </a-layout-sider>
+      <a-layout>
+        <a-layout-header style="background: #fff; padding: 0">
+          <a-icon
+            class="trigger"
+            :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+            @click="collapsed = !collapsed"
+          />
+          <Header style="float:right" />
+        </a-layout-header>
+        <a-layout-content style="margin: 0 16px">
+          <a-breadcrumb style="margin: 16px 0">
+            <a-breadcrumb-item>User</a-breadcrumb-item>
+            <a-breadcrumb-item>Bill</a-breadcrumb-item>
+          </a-breadcrumb>
+          <div
+            :style="{ padding: '24px', background: '#fff', minHeight: '90%' }"
+          >
+            <router-view></router-view>
+          </div>
+        </a-layout-content>
+        <a-layout-footer style="text-align: center">
+          <Footer />
+        </a-layout-footer>
+      </a-layout>
     </a-layout>
-  </a-layout>
+    <ThemeSetting />
+  </div>
 </template>
 <script>
 import Header from "./Header";
 import Footer from "./Footer";
 import SiderMenu from "./SiderMenu";
+import ThemeSetting from "../views/ThemeSetting";
 
 export default {
   name: "BaseLayout",
   data() {
     return {
-      collapsed: false
+      collapsed: false,
+      visible: false
     };
   },
-  components: { Header, Footer, SiderMenu }
+  computed: {
+    themeColor() {
+      return this.$route.query.themeColor || "dark";
+    },
+    themeLocal() {
+      return this.$route.query.themeLocal || "left";
+    }
+  },
+  components: { Header, Footer, SiderMenu, ThemeSetting }
 };
 </script>
 
