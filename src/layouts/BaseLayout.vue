@@ -8,8 +8,8 @@
         :trigger="null"
         collapsible
       >
-        <div class="logo" />
-        <SiderMenu />
+        <div class="logo">Ant Design Pro</div>
+        <SiderMenu :theme="themeColor" />
       </a-layout-sider>
       <a-layout>
         <a-layout-header style="background: #fff; padding: 0">
@@ -42,7 +42,7 @@
 <script>
 import Header from "./Header";
 import Footer from "./Footer";
-import SiderMenu from "./SiderMenu";
+import SiderMenu from "./menu/SiderMenu";
 import ThemeSetting from "../views/ThemeSetting";
 
 export default {
@@ -77,5 +77,15 @@ export default {
   height: 64px;
   line-height: 64px;
   font-size: 20px;
+}
+
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+  text-align: center;
+  color: white;
+  line-height: 32px;
+  font-size: 16px;
 }
 </style>
